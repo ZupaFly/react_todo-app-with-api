@@ -79,7 +79,6 @@ export const App: React.FC = () => {
       setTodos(prevTodos => [...prevTodos, newTodo]);
       setTempTodo(null);
       setError('');
-      inputRef.current?.focus();
     } catch {
       setError('Unable to add a todo');
       setTempTodo(null);
@@ -89,6 +88,10 @@ export const App: React.FC = () => {
       setTempTodo(null);
     }
   };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [todos]);
 
   const handleDeleteTodo = async (todoId: number) => {
     sethaveId(prev => [...prev, todoId]);
@@ -128,6 +131,7 @@ export const App: React.FC = () => {
       setError('Unable to delete completed todos');
     } finally {
       sethaveId([]);
+      inputRef.current?.focus();
     }
   };
 
