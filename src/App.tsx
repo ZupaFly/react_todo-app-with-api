@@ -7,6 +7,7 @@ import TodoList from './components/TodoList';
 import Footer from './components/Footer';
 import ErrorNotification from './components/ErrorNotification';
 import classNames from 'classnames';
+import { FilterType } from './types/Filter';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -167,11 +168,11 @@ export const App: React.FC = () => {
   };
 
   const filteredTodos = todos.filter(todo => {
-    if (filter === 'active') {
+    if (filter === FilterType.Active) {
       return !todo.completed;
     }
 
-    if (filter === 'completed') {
+    if (filter === FilterType.Completed) {
       return todo.completed;
     }
 

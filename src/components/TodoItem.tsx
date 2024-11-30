@@ -116,10 +116,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
   return (
     <div
       ref={todoItemRef}
+      data-cy="Todo"
       className={classNames('todo', { completed: todo.completed })}
     >
       <label className="todo__status-label" htmlFor={`todo-status-${todo.id}`}>
         <input
+          data-cy="TodoStatus"
           id={`todo-status-${todo.id}`}
           type="checkbox"
           className="todo__status"
@@ -136,6 +138,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
           }}
         >
           <input
+            data-cy="TodoTitleField"
             className="todo__title-change"
             type="text"
             value={newTitle}
@@ -146,12 +149,14 @@ const TodoItem: React.FC<TodoItemProps> = ({
       ) : (
         <>
           <span
+            data-cy="TodoTitle"
             className="todo__title"
             onDoubleClick={() => setIsEditing(true)}
           >
             {todo.title}
           </span>
           <button
+            data-cy="TodoDelete"
             type="button"
             className="todo__remove"
             onClick={handleDelete}
@@ -163,6 +168,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
       )}
 
       <div
+        data-cy="TodoLoader"
         className={classNames('modal overlay', {
           'is-active': haveId.includes(todo.id) || isSaving,
         })}
