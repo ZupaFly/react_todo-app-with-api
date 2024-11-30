@@ -33,6 +33,7 @@ const Footer: React.FC<FooterProps> = ({
             className={classNames('filter__link', {
               selected: filter === filterType,
             })}
+            data-cy={`FilterLink${filterType.toUpperCase()}`}
             onClick={() => onFilterChange(filterType)}
           >
             {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
